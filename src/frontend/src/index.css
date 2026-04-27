@@ -1,0 +1,440 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-display: "Space Grotesk";
+    --font-body: "DM Sans";
+    --font-mono: "Geist Mono";
+    --radius: 0.75rem;
+
+    --background: 0.99 0 0;
+    --foreground: 0.22 0.02 261;
+    --card: 1.0 0 0;
+    --card-foreground: 0.22 0.02 261;
+    --popover: 1.0 0 0;
+    --popover-foreground: 0.22 0.02 261;
+
+    --primary: 0.38 0.25 261;
+    --primary-foreground: 0.98 0 0;
+
+    --secondary: 0.95 0.01 261;
+    --secondary-foreground: 0.22 0.02 261;
+    --muted: 0.92 0.01 261;
+    --muted-foreground: 0.5 0.02 261;
+
+    --accent: 0.6 0.18 162;
+    --accent-foreground: 0.98 0 0;
+
+    --destructive: 0.55 0.22 25;
+    --destructive-foreground: 0.98 0 0;
+
+    --border: 0.88 0.01 261;
+    --input: 0.95 0.01 261;
+    --ring: 0.38 0.25 261;
+
+    --chart-1: 0.68 0.27 142;
+    --chart-2: 0.6 0.18 162;
+    --chart-3: 0.38 0.25 261;
+    --chart-4: 0.65 0.22 40;
+    --chart-5: 0.77 0.19 70;
+
+    --sidebar: 0.98 0 0;
+    --sidebar-foreground: 0.22 0.02 261;
+    --sidebar-primary: 0.38 0.25 261;
+    --sidebar-primary-foreground: 0.98 0 0;
+    --sidebar-accent: 0.6 0.18 162;
+    --sidebar-accent-foreground: 0.98 0 0;
+    --sidebar-border: 0.88 0.01 261;
+    --sidebar-ring: 0.38 0.25 261;
+  }
+
+  .dark {
+    --background: 0.08 0 0;
+    --foreground: 0.96 0.01 261;
+    --card: 0.12 0.01 261;
+    --card-foreground: 0.96 0.01 261;
+    --popover: 0.15 0.01 261;
+    --popover-foreground: 0.96 0.01 261;
+
+    --primary: 0.72 0.22 261;
+    --primary-foreground: 0.08 0 0;
+
+    --secondary: 0.2 0.01 261;
+    --secondary-foreground: 0.88 0.01 261;
+    --muted: 0.18 0.01 261;
+    --muted-foreground: 0.6 0.02 261;
+
+    --accent: 0.68 0.27 142;
+    --accent-foreground: 0.08 0 0;
+
+    --destructive: 0.65 0.19 22;
+    --destructive-foreground: 0.08 0 0;
+
+    --border: 0.22 0.01 261;
+    --input: 0.18 0.01 261;
+    --ring: 0.72 0.22 261;
+
+    --chart-1: 0.72 0.25 142;
+    --chart-2: 0.65 0.18 162;
+    --chart-3: 0.55 0.22 261;
+    --chart-4: 0.7 0.22 40;
+    --chart-5: 0.82 0.18 70;
+
+    --sidebar: 0.12 0.01 261;
+    --sidebar-foreground: 0.96 0.01 261;
+    --sidebar-primary: 0.72 0.22 261;
+    --sidebar-primary-foreground: 0.08 0 0;
+    --sidebar-accent: 0.68 0.27 142;
+    --sidebar-accent-foreground: 0.08 0 0;
+    --sidebar-border: 0.22 0.01 261;
+    --sidebar-ring: 0.72 0.22 261;
+  }
+
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+}
+
+@font-face {
+  font-family: "Space Grotesk";
+  src: url("/assets/fonts/SpaceGrotesk.woff2") format("woff2");
+  font-weight: 400 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "DM Sans";
+  src: url("/assets/fonts/DMSans.woff2") format("woff2");
+  font-weight: 400 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Geist Mono";
+  src: url("/assets/fonts/GeistMono.woff2") format("woff2");
+  font-weight: 400 500;
+  font-display: swap;
+}
+
+@layer utilities {
+  .transition-smooth {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .card-hover {
+    @apply transition-smooth hover:shadow-lg hover:-translate-y-2;
+  }
+
+  .btn-cta {
+    @apply px-6 py-3 rounded-lg font-semibold transition-smooth hover:opacity-90 active:scale-95;
+  }
+
+  .btn-primary {
+    @apply btn-cta bg-primary text-primary-foreground;
+  }
+
+  .btn-accent {
+    @apply btn-cta bg-accent text-accent-foreground;
+  }
+
+  .cta-green {
+    background-color: oklch(0.68 0.27 142);
+    color: white;
+  }
+
+  .scroll-smooth {
+    scroll-behavior: smooth;
+  }
+
+  .text-gradient {
+    background: linear-gradient(
+      135deg,
+      oklch(var(--primary)),
+      oklch(var(--accent))
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Stagger delay utilities */
+  .animate-delay-100 {
+    animation-delay: 100ms;
+  }
+  .animate-delay-200 {
+    animation-delay: 200ms;
+  }
+  .animate-delay-300 {
+    animation-delay: 300ms;
+  }
+  .animate-delay-400 {
+    animation-delay: 400ms;
+  }
+  .animate-delay-500 {
+    animation-delay: 500ms;
+  }
+  .animate-delay-600 {
+    animation-delay: 600ms;
+  }
+  .animate-delay-700 {
+    animation-delay: 700ms;
+  }
+
+  /* Reveal animation utility — sets fill-mode and opacity 0 before visible */
+  .reveal {
+    opacity: 0;
+    animation-fill-mode: both;
+  }
+  .reveal.in-view {
+    opacity: 1;
+  }
+}
+
+/* ===== Animations ===== */
+@keyframes scroll-ticker {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes pulse-soft {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes counter-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes glow-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 8px 2px oklch(0.6 0.18 162 / 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px 6px oklch(0.6 0.18 162 / 0.6);
+  }
+}
+
+@keyframes ticker-badge-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 6px 1px oklch(0.68 0.27 142 / 0.5);
+  }
+  50% {
+    box-shadow: 0 0 18px 4px oklch(0.68 0.27 142 / 0.9);
+  }
+}
+
+/* Animation classes */
+.animate-scroll-ticker {
+  animation: scroll-ticker 30s linear infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 2s ease-in-out infinite;
+}
+
+.animate-fade-up {
+  animation: fade-up 0.6s ease-out both;
+}
+
+.animate-slide-in-left {
+  animation: slide-in-left 0.6s ease-out both;
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 0.6s ease-out both;
+}
+
+.animate-scale-in {
+  animation: scale-in 0.5s ease-out both;
+}
+
+.animate-counter-spin {
+  animation: counter-spin 8s linear infinite;
+}
+
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    oklch(1 0 0 / 0.25) 50%,
+    transparent 100%
+  );
+  background-size: 200% auto;
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+
+.animate-ticker-badge-glow {
+  animation: ticker-badge-glow 2s ease-in-out infinite;
+}
+
+/* Dot pattern overlay utility */
+.dot-pattern {
+  background-image: radial-gradient(
+    circle,
+    oklch(1 0 0 / 0.07) 1px,
+    transparent 1px
+  );
+  background-size: 24px 24px;
+}
+
+/* Glassmorphism card for dark sections */
+.glass-card {
+  background: oklch(1 0 0 / 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid oklch(1 0 0 / 0.15);
+}
+
+.glass-card:hover {
+  background: oklch(1 0 0 / 0.13);
+  border-color: oklch(0.6 0.18 162 / 0.5);
+}
+
+/* Shimmer card image overlay */
+.shimmer-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    oklch(1 0 0 / 0.2) 50%,
+    transparent 100%
+  );
+  background-size: 200% auto;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+.group:hover .shimmer-overlay {
+  opacity: 1;
+}
+
+/* Accent left border on hover for property cards */
+.card-accent-hover {
+  border-left: 4px solid transparent;
+  transition: border-left-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s
+    ease;
+}
+.card-accent-hover:hover {
+  border-left-color: oklch(0.6 0.18 162);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px oklch(0.38 0.25 261 / 0.18);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-scroll-ticker,
+  .animate-float,
+  .animate-fade-up,
+  .animate-slide-in-left,
+  .animate-slide-in-right,
+  .animate-scale-in,
+  .animate-counter-spin,
+  .animate-shimmer,
+  .animate-glow-pulse,
+  .animate-ticker-badge-glow {
+    animation: none !important;
+  }
+  .animate-pulse-soft {
+    animation: none !important;
+    opacity: 1;
+  }
+  .shimmer-overlay {
+    display: none;
+  }
+  .reveal {
+    opacity: 1 !important;
+  }
+}
