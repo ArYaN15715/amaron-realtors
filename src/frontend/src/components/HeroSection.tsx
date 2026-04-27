@@ -70,7 +70,7 @@ export default function HeroSection() {
 
           {/* Headline */}
           <h1
-            className={`font-display font-bold text-4xl sm:text-5xl lg:text-6xl text-primary-foreground leading-tight mb-6 reveal ${contentVisible ? "animate-fade-up in-view animate-delay-100" : ""}`}
+            className={`font-display font-bold text-4xl sm:text-5xl lg:text-6xl text-white leading-tight mb-6 reveal ${contentVisible ? "animate-fade-up in-view animate-delay-100" : ""}`}
           >
             Delivering Property Deals with{" "}
             <span className="text-accent">Absolute Certainty</span>
@@ -78,7 +78,7 @@ export default function HeroSection() {
 
           {/* Subtext */}
           <p
-            className={`text-primary-foreground/80 text-lg sm:text-xl leading-relaxed mb-8 max-w-2xl reveal ${contentVisible ? "animate-fade-up in-view animate-delay-200" : ""}`}
+            className={`text-white/80 text-lg sm:text-xl leading-relaxed mb-8 max-w-2xl reveal ${contentVisible ? "animate-fade-up in-view animate-delay-200" : ""}`}
           >
             17+ years of fast, transparent deal execution on SG Highway,
             Jagatpur & Godrej Garden City. We don't just show properties — we
@@ -102,7 +102,7 @@ export default function HeroSection() {
             <button
               type="button"
               onClick={scrollToProperties}
-              className="inline-flex items-center justify-center gap-2 py-3.5 px-7 rounded-lg border border-primary-foreground/40 text-primary-foreground hover:bg-primary-foreground/10 transition-smooth text-base font-semibold hover:ring-2 hover:ring-primary-foreground/20 ring-offset-1"
+              className="inline-flex items-center justify-center gap-2 py-3.5 px-7 rounded-lg border border-white/40 text-white hover:bg-white/10 transition-smooth text-base font-semibold hover:ring-2 hover:ring-white/20 ring-offset-1"
               data-ocid="hero.view_properties_button"
             >
               View Properties
@@ -118,7 +118,7 @@ export default function HeroSection() {
                 className={`flex items-center gap-2 reveal ${contentVisible ? `animate-slide-in-left in-view animate-delay-${(i + 3) * 100}` : ""}`}
               >
                 <CheckCircle2 size={16} className="text-accent flex-shrink-0" />
-                <span className="text-primary-foreground/75 text-sm">
+                <span className="text-white/75 text-sm">
                   {point}
                 </span>
               </div>
@@ -128,19 +128,19 @@ export default function HeroSection() {
       </div>
 
       {/* Stats Bar with staggered scale-in */}
-      <div className="relative border-t border-primary-foreground/15">
+      <div className="relative border-t border-white/15">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 lg:grid-cols-4 divide-x divide-primary-foreground/15">
+          <div className="grid grid-cols-2 lg:grid-cols-4">
             {STATS.map((stat, i) => (
               <div
                 key={stat.label}
-                className={`flex flex-col items-center py-7 px-4 reveal ${contentVisible ? `animate-scale-in in-view animate-delay-${(i + 3) * 100}` : ""}`}
+                className={`flex flex-col items-center py-7 px-4 ${i % 2 !== 0 ? "border-l border-white/15" : ""} ${i > 0 ? "lg:border-l lg:border-white/15" : ""} reveal ${contentVisible ? `animate-scale-in in-view animate-delay-${(i + 3) * 100}` : ""}`}
                 data-ocid={`hero.stat.${stat.label.toLowerCase().replace(/\s+/g, "_")}`}
               >
                 <span className="font-display font-bold text-3xl text-accent">
                   {stat.value}
                 </span>
-                <span className="text-primary-foreground/65 text-xs font-body uppercase tracking-wide mt-1 text-center">
+                <span className="text-white/65 text-xs font-body uppercase tracking-wide mt-1 text-center">
                   {stat.label}
                 </span>
               </div>
@@ -150,9 +150,9 @@ export default function HeroSection() {
       </div>
 
       {/* Quick CTA ribbon */}
-      <div className="relative bg-primary-foreground/5 border-t border-primary-foreground/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-primary-foreground/70 text-sm">
+      <div className="relative bg-white/5 border-t border-white/10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
+          <p className="text-white/70 text-sm text-balance max-w-[90%] sm:max-w-none">
             📞 Need help now? Our experts are available 9 AM – 8 PM, 7 days a
             week.
           </p>
